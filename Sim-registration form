@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Card Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        input, select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>SIM Card Registration</h2>
+    <form id="simForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="idNumber">ID Number:</label>
+        <input type="text" id="idNumber" name="idNumber" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="provider">Select Provider:</label>
+        <select id="provider" name="provider" required>
+            <option value="vodacom">Vodacom</option>
+            <option value="airtel">Airtel</option>
+            <option value="yas">Tigo</option>
+            <option value="halotel">Halotel</option>
+        </select>
+
+        <button type="button" onclick="submitForm()">Register SIM</button>
+    </form>
+
+    <p id="confirmation" style="color: green; display: none;">SIM Card Registered Successfully!</p>
+</div>
+
+<script>
+    function submitForm() {
+        const name = document.getElementById('name').value;
+        const idNumber = document.getElementById('idNumber').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const provider = document.getElementById('provider').value;
+
+        if (name && idNumber && phoneNumber && provider) {
+            console.log(`Name: ${name}, ID: ${idNumber}, Phone: ${phoneNumber}, Provider: ${provider}`);
+            document.getElementById('confirmation').style.display = 'block';
+            document.getElementById('simForm').reset();
+        } else {
+            alert('Please fill out all fields.');
+        }
+    }
+</script>
+
+</body>
+</html>
